@@ -1,10 +1,10 @@
 import sbt._
 import Keys._
 import org.scalatra.sbt._
-import org.scalatra.sbt.PluginKeys._
 import com.earldouglas.xwp.JettyPlugin
 import com.mojolly.scalate.ScalatePlugin._
 import ScalateKeys._
+import sbtassembly.AssemblyKeys._
 
 object WekaexampleBuild extends Build {
   val Organization = "com.ajug.demo"
@@ -22,6 +22,7 @@ object WekaexampleBuild extends Build {
       version := Version,
       scalaVersion := ScalaVersion,
       resolvers += Classpaths.typesafeReleases,
+      mainClass in assembly := Some("com.ajug.demo.weka.JettyLauncher"),
       resolvers += "Scalaz Bintray Repo" at "http://dl.bintray.com/scalaz/releases",
       libraryDependencies ++= Seq(
         "org.scalatra" %% "scalatra" % ScalatraVersion,

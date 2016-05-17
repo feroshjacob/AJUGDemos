@@ -17,7 +17,7 @@ import weka.filters.unsupervised.attribute.StringToWordVector;
 import java.io.*;
 
 public class ProductTypeClassifier implements Serializable {
-
+    private static final long serialVersionUID = 1L;
     /* The training data gathered so far. */
     private Instances m_Data = null;
 
@@ -129,9 +129,21 @@ public class ProductTypeClassifier implements Serializable {
         return instance;
     }
 
+
+    protected void update() throws Exception {
+        m_Filter.setInputFormat(m_Data);
+
+        // Generate word counts from the training data.
+        Instances filteredData  = Filter.useFilter(m_Data, m_Filter);
+
+        // Rebuild classifier.
+        m_Classifier.buildClassifier(filteredData);
+        m_UpToDate = true;
+    }
     /**
      * Main method.
      */
+
     public static void main(String[] options) {
 
         try {
@@ -171,18 +183,5 @@ public class ProductTypeClassifier implements Serializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-
-
-    private  void update() throws Exception {
-        m_Filter.setInputFormat(m_Data);
-
-        // Generate word counts from the training data.
-        Instances filteredData  = Filter.useFilter(m_Data, m_Filter);
-
-        // Rebuild classifier.
-        m_Classifier.buildClassifier(filteredData);
-        m_UpToDate = true;
     }
 }
