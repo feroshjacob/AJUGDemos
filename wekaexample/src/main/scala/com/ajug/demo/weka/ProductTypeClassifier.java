@@ -4,12 +4,16 @@ package com.ajug.demo.weka;
  * Created by Ferosh Jacob on 5/16/16.
  */
 
-import weka.core.*;
 import weka.classifiers.Classifier;
 import weka.classifiers.trees.J48;
+import weka.core.Attribute;
+import weka.core.FastVector;
+import weka.core.Instance;
+import weka.core.Instances;
 import weka.core.converters.ArffLoader;
 import weka.filters.Filter;
 import weka.filters.unsupervised.attribute.StringToWordVector;
+
 import java.io.*;
 
 public class ProductTypeClassifier implements Serializable {

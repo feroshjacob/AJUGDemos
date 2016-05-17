@@ -1,11 +1,6 @@
 package com.ajug.demo.weka
 
-import java.io.{FileInputStream, ObjectInputStream}
-
-import org.scalatest.{Matchers, FunSuite}
-import weka.classifiers.Classifier
-import weka.core.Instance
-import weka.filters.unsupervised.attribute.StringToWordVector
+import org.scalatest.{FunSuite, Matchers}
 
 
 /**

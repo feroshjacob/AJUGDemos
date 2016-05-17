@@ -1,7 +1,5 @@
 package com.ajug.demo.weka
 
-import org.scalatra._
-
 import com.ajug.demo.weka.ClassifierLoader._
 class ProductSenseDisambig extends WekaexampleStack {
 
